@@ -129,7 +129,7 @@ namespace AddressBook_CS
             Console.WriteLine("Enter the first name of the person you would like to remove.");
             string delete = Console.ReadLine();
             //Tolist() used to return a new list,means input converted to list
-            foreach (var person in personDetails.ToList())
+            foreach (var person in personDetails)
             {
                 if (person.firstName.ToUpper() == delete.ToUpper())
                 {
@@ -138,6 +138,7 @@ namespace AddressBook_CS
                     {
                         personDetails.Remove(person);
                         Console.WriteLine("\nContact is deleted");
+                        break;
                     }
                 }
                 else
