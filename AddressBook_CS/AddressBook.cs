@@ -7,7 +7,7 @@ namespace AddressBook_CS
 /// Template for Address Book Program
 /// </summary>
     class AddressBook
-    {   //Uc6 create multiple address book
+    {   //Uc7 avoid duplicate entry
         //creating object person from Contact class
         public LinkedList<Contact> personDetails = new LinkedList<Contact>();
 
@@ -17,6 +17,12 @@ namespace AddressBook_CS
             Contact person = new Contact();
             Console.WriteLine("Enter first name");
             person.firstName = Console.ReadLine();
+            bool existName = DuplicateEntryCheck(person.firstName);
+            if (existName)
+            {
+                Console.WriteLine("This contact already exist please add new entry");
+                AddPerson();
+            }
             Console.WriteLine("Enter last name");
             person.lastName = Console.ReadLine();
             Console.WriteLine("Enter address name");
@@ -31,7 +37,18 @@ namespace AddressBook_CS
             person.phoneNumber = Console.ReadLine();
             Console.WriteLine("Enter email id");
             person.email = Console.ReadLine();
-            personDetails.AddLast(person);
+            personDetails.AddLast(person);            
+        }
+
+        //Check and avoid duplicate entries 
+        public bool DuplicateEntryCheck(string Name)
+        {
+            //using lambda expression to check for firstname
+            bool found = personDetails.Any(e => (e.firstName.ToLower().Equals(Name.ToLower())));
+            if (found)
+                return true;
+            else
+                return false;
         }
 
         //Printing the address book details 
