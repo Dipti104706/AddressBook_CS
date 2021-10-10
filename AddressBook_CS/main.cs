@@ -48,7 +48,7 @@ namespace AddressBook_CS
                 Console.WriteLine("Enter any key to continue");
                 Console.ReadLine();
             }
-            Console.WriteLine("Choose one operation to perform:\n 1-Edit a existing contact \n 2-Delete existing contact \n 3-View by city or state \n 4-Get persons counted by city or state \n 5-Exit from the operation");
+            Console.WriteLine("Choose one operation to perform:\n 1-Edit a existing contact \n 2-Delete existing contact \n 3-View by city or state \n 4-Get persons counted by city or state \n 5-Sort the address book alphabatically \n 6-Exit from the operation");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -72,6 +72,11 @@ namespace AddressBook_CS
                     Console.ReadLine();
                     break;
                 case 5:
+                    Console.WriteLine("Sorting the address book in alphabatically manner");
+                    person1.SortingContactAlphabatically(addressBook);
+                    Console.ReadLine();
+                    break;
+                case 6:
                     break;
                 default:
                     Console.WriteLine("Please enter a valid input");

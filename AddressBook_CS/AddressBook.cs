@@ -208,6 +208,26 @@ namespace AddressBook_CS
             }
         }
 
+        //UC11-Sort the contact details in address book alphabatically
+        public void SortingContactAlphabatically(Dictionary<string, List<AddressBook>> addressBook)
+        {
+            foreach (KeyValuePair<string, List<AddressBook>> kvp in addressBook)
+            {
+                Console.WriteLine("The contacts sorted alphatically in address book {0}", kvp.Key);
+                List<AddressBook> list = new List<AddressBook>();
+                foreach (var member in kvp.Value)
+                {
+                    list.Add(member);
+                }
+                //Using Lambda exp to sort it by first name alphabatically
+                List<AddressBook> members = list.OrderBy(x => x.firstName).ToList();
+                foreach (var member in members)
+                {
+                    Console.WriteLine(member.ToString());
+                }
+            }
+        }
+
         //creating method for editing existing contact in address book
         public void Edit()
         {
